@@ -24,8 +24,7 @@ function updateMemberId() {
     var memberIdSelect = document.getElementById("memberIdSelect");
     var memberIdInput = document.getElementById("memberIdInput");
 
-    var selectedMemberId = memberIdSelect.value;
-    memberIdInput.value = selectedMemberId;
+    memberIdInput.value = memberIdSelect.value;
 }
 
 function res(){
