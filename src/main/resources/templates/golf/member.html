@@ -20,6 +20,10 @@
         </tr>
         <tr th:each="dto : ${list}" th:object="${dto}">
             <td th:text="*{date}">수강월</td>
+            <td>
+                <span th:text="*{#strings.substring(date, 0, 4)}"></span> 년
+                <span th:text="*{#strings.substring(date, 4, 6)}"></span> 월
+            </td>
             <td th:text="*{id}">회원번호</td>
             <td th:text="*{name}">회원명</td>
             <td th:text="*{className}">강의명</td>
