@@ -24,7 +24,7 @@
                 <td>
                     <select id="memberIdSelect" onchange="updateTuition()" >
                         <option>회원명울 선택하세요</option>
-                        <option th:each="member : ${member}" th:value="${member.id}" th:text="${member.name}" th:attr="data-grade=${member.grade}">회원명</option>
+                        <option th:each="member : ${member}" th:value="${member.id}" th:text="${member.name}" >회원명</option>
                     </select>
                     <span th:errors="*{classNo}"></span>
                 </td>
@@ -47,8 +47,7 @@
                         <option>강의명을 선택하세요</option>
                         <option th:each="teacher : ${teacher}"
                                 th:value="${teacher.price}"
-                                th:text="${teacher.className}"
-                                th:attr="data-price=${teacher.price}, data-teacher=${teacher.teacher}">강의명</option>
+                                th:text="${teacher.className}">강의명</option>
                     </select>
                     <span th:errors="*{tuition}"></span>
                 </td>
