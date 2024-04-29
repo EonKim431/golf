@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/script.js}"></script>
+</head>
+<body>
+<div layout:fragment="content" class="content">
+    <form th:action="@{/submit}" method="post" id="frm" name="frm" >
+        <table border="1"  th:object="${dto}" class="table">
+            <tr>
+                <td>수강월</td>
+                <td>
+                    <input type="text"  th:field="*{registMonth}">
+                    <span th:errors="*{registMonth}"></span>
+                    <span>예) 2022년 03월 -> 202203</span>
+                </td>
+            </tr>
+            <tr>
+                <td>회원명</td>
+                <td>
+                    <select id="memberIdSelect" onchange="updateTuition()" >
+                        <option th:each="member : ${member}" th:value="${member.id}" th:text="${member.name}" th:attr="data-grade=${member.grade}">회원명</option>
+                    </select>
+                    <span th:errors="*{classNo}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>회원번호</td>
+                <td>
+                    <input type="text" id="memberIdInput" readonly th:field="*{classNo}">
+                    <span>예) 10001</span>
+                </td>
+            </tr>
+            <tr>
+                <td>강의장소</td>
+                <td><input type="text"  th:field="*{classArea}"><span th:errors="*{classArea}"></span></td>
+            </tr>
+            <tr>
+                <td>강의명</td>
+                <td>
+                    <select id="className" onchange="updateTuition()">
+                        <option th:each="teacher : ${teacher}"
+                                th:value="${teacher.price}"
+                                th:text="${teacher.className}"
+                                th:attr="data-price=${teacher.price}, data-teacher=${teacher.teacher}">강의명</option>
+                    </select>
+                    <span th:errors="*{tuition}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>수강료</td>
+                <td>
+                    <input type="text" id="tuitionPrice" readonly  th:field="*{tuition}">
+                </td>
+            </tr>
+            <tr>
+                <input type="hidden" id="teacherInput" th:field="*{teacherCode}">
+                <td><input type="submit" value="수강신청" class="btn btn-primary"></td>
+                <td><input type="button" value="초기화" class="btn btn-primary" onclick="res()"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
