@@ -16,15 +16,11 @@ function updateTuition() {
 
     var selectedMemberGrade = memberIdSelect.options[memberIdSelect.selectedIndex].getAttribute('data-grade');
     if (selectedMemberGrade === "VIP") {
-        tuitionPrice.value = parseInt(tuitionPrice.value) / 2;
+        var tuition = parseInt(tuitionSelect.value);
+        tuitionPrice.value = tuition / 2;
+    } else {
+        tuitionPrice.value = tuitionSelect.value;
     }
-}
-
-function updateMemberId() {
-    var memberIdSelect = document.getElementById("memberIdSelect");
-    var memberIdInput = document.getElementById("memberIdInput");
-
-    memberIdInput.value = memberIdSelect.value;
 }
 
 function res(){
